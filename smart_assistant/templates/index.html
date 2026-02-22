@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Smart AI Personal Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🤖 Smart Assistant</h1>
+                <p id="greeting" class="greeting">Welcome!</p>
+            </div>
+            <div class="header-controls">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle light/dark mode" onclick="toggleTheme()">
+                    🌙
+                </button>
+                <button id="voiceToggleBtn" class="voice-btn" title="Toggle voice input" onclick="toggleVoiceMode()">
+                    🎤 Voice: OFF
+                </button>
+                <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
+            </div>
+        </header>
+
+        <!-- Settings Panel -->
+        <div id="settingsPanel" class="settings-panel hidden">
+            <div class="settings-content">
+                <h2>Settings</h2>
+                <div class="setting-group">
+                    <label for="nameInput">Your Name:</label>
+                    <input type="text" id="nameInput" placeholder="Enter your name">
+                    <button onclick="saveName()">Save</button>
+                </div>
+                <button class="close-btn" onclick="toggleSettings()">✕ Close</button>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <div id="chatLog" class="chat-log">
+                <div class="message assistant-message">
+                    <div class="message-content">
+                        👋 Hi! I'm your Smart AI Personal Assistant. Try saying things like:
+                        <ul>
+                            <li>"what time is it"</li>
+                            <li>"remind me at 3 pm to drink water"</li>
+                            <li>"log expense 50 on food"</li>
+                            <li>"open notepad"</li>
+                            <li>"my daily summary"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <button id="micBtn" class="mic-btn" title="Listen for voice command" onclick="startListening()">
+                    🎤
+                </button>
+                <input type="text" id="userInput" placeholder="Type your command or question..." autocomplete="off">
+                <button id="sendBtn" onclick="sendMessage()">Send</button>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>📋 Today's Reminders</h3>
+                <div id="remindersList" class="items-list">
+                    <small class="placeholder">No reminders yet</small>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>💰 Today's Expenses</h3>
+                <div id="expensesList" class="items-list">
+                    <small class="placeholder">No expenses logged</small>
+                </div>
+                <div id="expenseTotal" class="total hidden">
+                    <strong>Total: ₹<span id="totalAmount">0</span></strong>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>� Contacts</h3>
+                <div id="contactsList" class="items-list">
+                    <small class="placeholder">No contacts yet</small>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>�📝 Memories</h3>
+                <div id="memoriesList" class="items-list">
+                    <small class="placeholder">No memories stored</small>
+                </div>
+            </div>
+
+            <button class="refresh-all-btn" onclick="resetAllData()" title="Clear all data">🔄 Reset All</button>
+        </aside>
+
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

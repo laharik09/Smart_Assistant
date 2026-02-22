@@ -1,0 +1,26 @@
+# ──────────────────────────────────────────────
+# Smart AI Personal Assistant – requirements.txt
+# ──────────────────────────────────────────────
+
+# ML / NLP
+scikit-learn>=1.3.0
+joblib>=1.3.0
+
+# Speech recognition (voice input)
+SpeechRecognition>=3.10.0
+
+# Text-to-speech (voice output)
+pyttsx3>=2.90
+
+# PyAudio is required by SpeechRecognition for microphone access.
+# Install separately if pip fails (platform-specific):
+#   Ubuntu/Debian : sudo apt-get install python3-pyaudio
+#   macOS         : brew install portaudio && pip install pyaudio
+#   Windows       : pip install pyaudio   (binary wheels available)
+PyAudio>=0.2.13
+
+# Web UI
+Flask>=3.0.0
+
+# Standard library only (no extra pip package needed):
+#   sqlite3, threading, webbrowser, re, subprocess, datetime, os, sys, urllib
